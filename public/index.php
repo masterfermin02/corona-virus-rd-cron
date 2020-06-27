@@ -6,7 +6,7 @@ require __DIR__ . '/../src/Bootstrap.php';
 
 $coronaVirus = new \App\CoronaVirus\CoronaVirus(new \App\CoronaVirus\CoronaVirusApi());
 use Kreait\Firebase\Factory;
-use \Dotenv\Dotenv;
+use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
