@@ -72,8 +72,8 @@ $gitPullResponse = callCloudWaysAPI('POST', '/git/pull', $accessToken, [
     'server_id' => getVar('server_id'),
     'app_id' => getVar('app_id'),
     'git_url' => getVar('git_url'),
-    'branch_name' => getVar('branch_name'),
-    'deploy_path' => getVar('deploy_path')
+    'branch_name' => getVar('branch_name')
+    //'deploy_path' => getVar('deploy_path')
 ]);
 
 echo (json_encode($gitPullResponse));
