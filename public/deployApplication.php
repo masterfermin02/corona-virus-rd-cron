@@ -42,7 +42,7 @@ function callCloudwaysAPI($method, $url, $accessToken, $post = [])
     $output = curl_exec($ch);
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     if ($httpcode != '200') {
-        die('An deploy error occurred code: ' . $httpcode . ' output: ' . substr($output, 0, 10000));
+        die('An error occurred code: ' . $httpcode . ' output: ' . substr($output, 0, 10000));
     }
     curl_close($ch);
     return json_decode($output);
