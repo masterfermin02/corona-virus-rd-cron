@@ -1,0 +1,7 @@
+vendor/
+composer.lock
+.idea/
+test-coverage/
+coverage.xml
+.env
+coronavirus-rd-dev-bfe74aec1f2a.json
