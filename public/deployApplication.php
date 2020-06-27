@@ -9,7 +9,7 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
-$API_KEY = $_ENV['FIREBASE_CREDENTIALS'];
+$API_KEY = $_ENV['API_KEY'];
 const API_URL = "https://api.cloudways.com/api/v1";
 $EMAIL = $_ENV['DEPLOYMENT_EMAIL'];
 
