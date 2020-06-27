@@ -27,8 +27,16 @@ class CoronaVirusFireBase implements UpdateEnable
     public function update()
     {
         $provinceStat = $this->dataBase->gets();
+        if ($this->isUptoDate($provinceStat['lastUpdate'])) {
+            echo 'Firebase is up to date';
+            return;
+        }
         $result = $this->api->getData();
         $response = json_decode($result['response']);
+        if (!$this->isUptoDate($response->lastUpdated)) {
+            echo 'The API is not up to date';
+            return;
+        }
         $statKey = count($provinceStat[self::STATS_REFERENCE]);
         $this->dataBase->update([
             'lastUpdate' => $response->lastUpdated,
@@ -71,5 +79,10 @@ class CoronaVirusFireBase implements UpdateEnable
     private function replaceComma(string $str): string
     {
         return str_replace (',','',$str);
+    }
+
+    private function isUptoDate($lastUpdated)
+    {
+        return date('d',strtotime($lastUpdated)) === date('d');
     }
 }
