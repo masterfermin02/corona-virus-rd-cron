@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
 
+(PHP_SAPI !== 'cli' || isset($_SERVER['HTTP_USER_AGENT'])) && die('cli only');
+
 require __DIR__ . '/../src/Bootstrap.php';
 
 $coronaVirus = new \App\CoronaVirus\CoronaVirus(new \App\CoronaVirus\CoronaVirusApi());
