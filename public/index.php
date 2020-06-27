@@ -4,11 +4,14 @@ require __DIR__ . '/../src/Bootstrap.php';
 
 $coronaVirus = new \App\CoronaVirus\CoronaVirus(new \App\CoronaVirus\CoronaVirusApi());
 use Kreait\Firebase\Factory;
+use \Dotenv\Dotenv;
 
-$factory = (new Factory)->withServiceAccount(__DIR__ . '/../coronavirus-rd-dev-bfe74aec1f2a.json');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+$factory = (new Factory)->withServiceAccount(__DIR__ . '/../' . $_ENV['FIREBASE_CREDENTIALS']);
 $database = $factory->createDatabase();
 $service = new \App\FireBase\CoronaVirusFirebaseService($database, 'provincesStat/');
 $CoroVirusFirebase = new \App\CoronaVirus\CoronaVirusFireBase($coronaVirus, $service);
 
 $CoroVirusFirebase->update();
-//print_r();
