@@ -14,7 +14,7 @@ const API_URL = "https://api.cloudways.com/api/v1";
 $EMAIL = $_ENV['DEPLOYMENT_EMAIL'];
 
 const BranchName = "master";
-const GitUrl = "git@bitbucket.org:user22/repo_name.git";
+const GitUrl = "git@github.com:masterfermin02/corona-virus-rd-cron.git";
 
 //Use this function to contact CW API
 function callCloudwaysAPI($method, $url, $accessToken, $post = [])
@@ -55,15 +55,25 @@ $tokenResponse = callCloudwaysAPI('POST', '/oauth/access_token', null
         'api_key' => $API_KEY
     ]);
 
+function getVar($val) {
+    if (isset($_GET[$val])) {
+        return $_GET[$val];
+    }
+
+    if (isset($_POST[$val])) {
+        return $_POST[$val];
+    }
+
+    return null;
+}
+
 $accessToken = $tokenResponse->access_token;
 $gitPullResponse = callCloudWaysAPI('POST', '/git/pull', $accessToken, [
-    'server_id' => $_GET['server_id'],
-    'app_id' => $_GET['app_id'],
-    'git_url' => $_GET['git_url'],
-    'branch_name' => $_GET['branch_name']
-    /* Uncomment it if you want to use deploy path, Also add the new parameter in your link
-    'deploy_path' => $_GET['deploy_path']
-    */
+    'server_id' => getVar('server_id'),
+    'app_id' => getVar('app_id'),
+    'git_url' => getVar('git_url'),
+    'branch_name' => getVar('branch_name'),
+    'deploy_path' => getVar('deploy_path')
 ]);
 
 echo (json_encode($gitPullResponse));
