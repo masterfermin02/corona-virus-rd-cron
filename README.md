@@ -1,5 +1,6 @@
 # corona-virus-rd-cron
-This PHP repository is to auto update coronavirus RD firebase data. It start run at 10:30 AM and end when find the new update or at 1 PM.
+This PHP repository has a script to update coronavirus RD Firebase database table daily. 
+It request the information from [covid-rd.now.sh](https://covid-rd.now.sh/api/boletin) API.
 
 ### API
 
