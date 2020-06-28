@@ -5,7 +5,7 @@ This PHP repository is to auto update coronavirus RD firebase data. It start run
 
 - [API](https://covid-rd.now.sh/api/boletin)
     
-### Corona virus opens site
+### Corona virus open source site tracker for Dominican Republic
 - [Admin panel](https://github.com/masterfermin02/coronavirusrd-admin)
 - [App](https://github.com/masterfermin02/coronavirusrd)
 
