@@ -80,7 +80,7 @@ $gitPullResponse = callCloudWaysAPI('POST', '/git/pull', $accessToken, [
 ]);
 
 if ($app_id == $prestame_id) {
-    $gitPullResponse['compile_script_response'] = shell_exec("cd /home/398253.cloudwaysapps.com/gvsuqpuegd/public_html && npm install && npm run prod");
+    shell_exec("cd /home/398253.cloudwaysapps.com/gvsuqpuegd/public_html && npm install && npm run prod");
 }
 
 echo (json_encode($gitPullResponse));
