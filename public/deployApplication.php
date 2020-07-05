@@ -67,13 +67,20 @@ function getVar($val) {
     return null;
 }
 
+$prestame_id = 1365298;
+$app_id = getVar('app_id');
+
 $accessToken = $tokenResponse->access_token;
 $gitPullResponse = callCloudWaysAPI('POST', '/git/pull', $accessToken, [
     'server_id' => getVar('server_id'),
-    'app_id' => getVar('app_id'),
+    'app_id' => $app_id,
     'git_url' => getVar('git_url'),
     'branch_name' => getVar('branch_name')
     //'deploy_path' => getVar('deploy_path')
 ]);
+
+if ($app_id == $prestame_id) {
+    $gitPullResponse['compile_script_response'] = shell_exec("cd /home/398253.cloudwaysapps.com/gvsuqpuegd/public_html && npm install && npm run prod");
+}
 
 echo (json_encode($gitPullResponse));
