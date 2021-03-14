@@ -1,4 +1,5 @@
 # Corona-virus-rd-cron
+
 This PHP repository has a script to update coronavirus RD Firebase database table daily. 
 Its request the information from [covid-rd.now.sh](https://covid-rd.now.sh/api/boletin) API.
 
